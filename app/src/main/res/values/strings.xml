@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">login</string>
+    <string name="login_item_def_name">Imię Nazwisko</string>
+    <string name="login_item_def_email">przykładowy@email.com</string>
+
+    <string name="register_button">Zarejestruj konto</string>
+</resources>
