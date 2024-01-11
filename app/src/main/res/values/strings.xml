@@ -4,4 +4,18 @@
     <string name="login_item_def_email">przykładowy@email.com</string>
 
     <string name="register_button">Zarejestruj konto</string>
+
+    <string name="formName">nazwa użytkownika</string>
+    <string name="formEmail">email</string>
+    <string name="formPass">hasło</string>
+    <string name="formRepeatPass">powtórz hasło</string>
+    <string name="formSubmit">Załóż konto</string>
+
+    <string name="formNameTooLong">Za długa nazwa</string>
+    <string name="formNameTooShort">Za krótka nazwa</string>
+    <string name="formEmailInvalid">Niepoprawny email</string>
+    <string name="formPassTooShort">Hasło za krótkie</string>
+    <string name="formPassTooLong">Hasło za długie</string>
+    <string name="formPassRegexError">Nieprawidłowe hasło</string>
+    <string name="formPassNotMatch">Hasła nie są identyczne</string>
 </resources>

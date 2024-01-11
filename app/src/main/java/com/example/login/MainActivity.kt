@@ -1,7 +1,7 @@
 package com.example.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.login.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

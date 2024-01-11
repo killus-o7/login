@@ -1,13 +1,15 @@
 package com.example.login.data
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import org.jetbrains.annotations.Nullable
 
 @Entity
 data class User (
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
     val email: String,
-    val pass: String,
-    val pfp: String
+    val pass: Int,
+    val pfp: String?,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
 ) {
 }
