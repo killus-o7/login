@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">login</string>
+
     <string name="login_item_def_name">Imię Nazwisko</string>
     <string name="login_item_def_email">przykładowy@email.com</string>
 
     <string name="register_button">Zarejestruj konto</string>
+    <string name="logoutButton">Wyloguj się</string>
+    <string name="confirm">Zatwierdź</string>
 
     <string name="formName">nazwa użytkownika</string>
     <string name="formEmail">email</string>
@@ -22,6 +25,9 @@
     <string name="mainNavData">Dane</string>
     <string name="mainNavNotifications">Powiadomienia</string>
     <string name="mainNavAccount">Konto</string>
+
+    <string name="settingsChangeEmail">Zmień Email</string>
+    <string name="settingsChangePass">Zmień Hasło</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

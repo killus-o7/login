@@ -6,7 +6,7 @@ import androidx.viewbinding.ViewBinding
 import com.example.login.data.AppDb
 
 abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
-    abstract val b: T
+    protected abstract val b: T
     protected val db by lazy { AppDb[this] }
     protected val session by lazy { Session(this) }
 

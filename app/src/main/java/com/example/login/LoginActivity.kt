@@ -42,7 +42,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         session.active = true
         session.username = user.name
         session.email = user.email
-        session.pfp
+        session.pfp = user.pfp
 
         startMainActivity()
     }

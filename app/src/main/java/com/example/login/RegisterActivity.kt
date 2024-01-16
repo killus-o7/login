@@ -64,19 +64,19 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
     private fun submit(){
         if (inputs.count { it.valid() } != inputs.size) return
 
-        val imageExt = contentResolver.getType(imageUri!!)?.split("/")?.last() ?: "jpg"
+/*        val imageExt = contentResolver.getType(imageUri!!)?.split("/")?.last() ?: "jpg"
         val imageFile = filesDir.resolve("${UUID.randomUUID()}.$imageExt")
         contentResolver.openInputStream(imageUri!!)?.use { input ->
             imageFile.outputStream().use { output ->
                 input.copyTo(output)
             }
-        }
+        }*/
 
         User(
             b.name.editText?.text.toString(),
             b.email.editText?.text.toString(),
             b.pass.editText?.text.toString().hashCode(),
-            imageFile.name
+            null //imageFile.name
         ).let { GlobalScope.launch { db.userDao().insert(it) }}
 
         closeActivity()
