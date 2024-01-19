@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <declare-styleable name="ValidatedTextInputLayout">
+        <attr name="passInput" format="reference"/>
+        <attr name="validator" format="enum">
+            <enum name="name" value="0"/>
+            <enum name="email" value="1"/>
+            <enum name="pass" value="2"/>
+            <enum name="repeatPass" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

@@ -13,13 +13,13 @@ interface UserDao {
     @Query("SELECT * FROM User")
     fun all(): LiveData<List<User>>
     @Query("SELECT * FROM User WHERE email = :email AND pass = :pass LIMIT 1")
-    fun get(email: String, pass: String): User?
+    suspend fun get(email: String, pass: String): User?
     @Query("SELECT email FROM User WHERE email = :email")
-    fun emailExist(email: String): String?
+    suspend fun emailExist(email: String): String?
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun insert(user: User)
+    suspend fun insert(user: User)
     @Update
-    fun update(user: User)
+    suspend fun update(user: User)
     @Delete
-    fun delete(user: User)
+    suspend fun delete(user: User)
 }

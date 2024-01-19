@@ -26,8 +26,9 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.example.login.ui.ValidatedTextInputLayout
+    <com.example.login.ui.ValidatedInputLayout
         android:id="@+id/name"
+        app:validator="name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -41,10 +42,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    </com.example.login.ui.ValidatedTextInputLayout>
+    </com.example.login.ui.ValidatedInputLayout>
 
-    <com.example.login.ui.ValidatedTextInputLayout
+    <com.example.login.ui.ValidatedInputLayout
         android:id="@+id/email"
+        app:validator="email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -55,10 +57,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    </com.example.login.ui.ValidatedTextInputLayout>
+    </com.example.login.ui.ValidatedInputLayout>
 
-    <com.example.login.ui.ValidatedTextInputLayout
+    <com.example.login.ui.ValidatedInputLayout
         android:id="@+id/pass"
+        app:validator="pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -70,10 +73,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
-    </com.example.login.ui.ValidatedTextInputLayout>
+    </com.example.login.ui.ValidatedInputLayout>
 
-    <com.example.login.ui.ValidatedTextInputLayout
+    <com.example.login.ui.ValidatedInputLayout
         android:id="@+id/repeatPass"
+        app:validator="repeatPass"
+        app:passInput="@id/pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -85,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
-    </com.example.login.ui.ValidatedTextInputLayout>
+    </com.example.login.ui.ValidatedInputLayout>
 
     <Button
         android:id="@+id/button"

@@ -17,6 +17,7 @@
     <string name="formNameTooLong">Za długa nazwa</string>
     <string name="formNameTooShort">Za krótka nazwa</string>
     <string name="formEmailInvalid">Niepoprawny email</string>
+    <string name="formEmailExists">Podany email już jest zajęty</string>
     <string name="formPassTooShort">Hasło za krótkie</string>
     <string name="formPassTooLong">Hasło za długie</string>
     <string name="formPassRegexError">Nieprawidłowe hasło</string>
