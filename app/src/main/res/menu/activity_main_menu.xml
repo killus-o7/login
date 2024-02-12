@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:id="@+id/nav1"
         android:enabled="true"
-        android:icon="@drawable/baseline_data_object_24"
-        android:title="@string/mainNavData"/>
-
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="@string/mainNavAccount"/>
     <item android:id="@+id/nav2"
         android:enabled="true"
         android:icon="@drawable/baseline_notifications_24"
         android:title="@string/mainNavNotifications"/>
-
-    <item android:id="@+id/nav3"
-        android:enabled="true"
-        android:icon="@drawable/baseline_account_circle_24"
-        android:title="@string/mainNavAccount"/>
 </menu>

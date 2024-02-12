@@ -1,16 +1,15 @@
 package com.example.login
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.login.data.AppDb
 import com.example.login.data.User
 import com.example.login.databinding.ActivityLoginBinding
 import com.example.login.ui.LoginAdapter
 import com.example.login.utils.BaseActivity
-import com.example.login.utils.Session
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
@@ -32,14 +31,35 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
     override fun onStart() {
         super.onStart()
-        if (session.active)
+        session.checkSessionTimeout {
             startMainActivity()
+        }
     }
 
     private fun onProfileClick(user: User) {
-        // Zrób dialog by się zalogować
+        MaterialAlertDialogBuilder(this).apply {
+            val et =
+                TextInputEditText(context).apply {
+                    setText(pfp)
+                }
+
+            val layout =
+                TextInputLayout(context).apply {
+                    val margin = resources.getDimensionPixelSize(R.dimen.dialogInputMargin)
+                    setPadding(margin, 0, margin, 0)
+                    addView(et)
+                }
+
+            setTitle(R.string.pfpDialogTitle)
+            setView(layout)
+            setPositiveButton(R.string.pfpDialogPositive) { _, _ ->
+                pfp = et.text.toString()
+            }
+            setNegativeButton(R.string.pfpDialogNeutral, null)
+        }.show()
 
         session.active = true
+        session.user = user
         session.username = user.name
         session.email = user.email
         session.pfp = user.pfp

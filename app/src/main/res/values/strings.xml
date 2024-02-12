@@ -30,5 +30,8 @@
     <string name="settingsChangeEmail">Zmień Email</string>
     <string name="settingsChangePass">Zmień Hasło</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pfpDialogNeutral">anuluj</string>
+    <string name="pfpDialogNegative">usuń</string>
+    <string name="pfpDialogPositive">akceptuj</string>
+    <string name="pfpDialogTitle">Zmień zdjęcie profilowe</string>
 </resources>

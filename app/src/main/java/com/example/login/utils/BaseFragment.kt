@@ -10,6 +10,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
     protected lateinit var b: T
     protected val db by lazy { AppDb[requireContext()] }
     protected val session by lazy { Session(requireContext()) }
+
     abstract fun getViewBinding(): T
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -1,64 +1,67 @@
 package com.example.login
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import com.example.login.databinding.ActivityRegisterBinding
-import java.util.regex.Pattern
-import androidx.activity.result.contract.ActivityResultContracts
-import com.bumptech.glide.Glide
+import android.util.Patterns
 import com.example.login.data.User
+import com.example.login.databinding.ActivityRegisterBinding
 import com.example.login.ui.ValidatedInputLayout
 import com.example.login.utils.BaseActivity
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
     override val b by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
     private val inputs by lazy { listOf(b.name, b.email, b.pass, b.repeatPass) }
-    private var imageUri: Uri? = null
+    private var user: User = User("", "", 0, null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         b.button.setOnClickListener { submit() }
-        b.image.setOnClickListener { getImage.launch("image/*") }
-
-        /* WALIDACJA */
-        val passPattern: Pattern = Pattern
-            .compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%^&+=])(?=\\\\S+\$).{8,}\$")
+        b.image.setOnClickListener {
+            user.changePfp(this, b.image)
+        }
+        applyCases()
     }
 
-    private val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
-        imageUri = it
-        if (it != null)
-            Glide.with(this).load(it).into(b.image)
-    }
 
-    private fun submit() {
-            ValidatedInputLayout.validate(inputs) { onSubmit() }
-    }
+
+    private fun submit() = ValidatedInputLayout.validate(inputs) { onSubmit() }
+
 
     @OptIn(DelicateCoroutinesApi::class)
     private fun onSubmit() {
-        /*        val imageExt = contentResolver.getType(imageUri!!)?.split("/")?.last() ?: "jpg"
-        val imageFile = filesDir.resolve("${UUID.randomUUID()}.$imageExt")
-        contentResolver.openInputStream(imageUri!!)?.use { input ->
-            imageFile.outputStream().use { output ->
-                input.copyTo(output)
-            }
-        }*/
-
         User(
             b.name.editText?.text.toString(),
             b.email.editText?.text.toString(),
             b.pass.editText?.text.toString().hashCode(),
-            null //imageFile.name
+            user.pfp
         ).let { GlobalScope.launch { db.userDao().insert(it) }}
         closeActivity()
+    }
+
+    private fun applyCases(){
+        fun emailMatches (s: String) = Patterns.EMAIL_ADDRESS.matcher(s).matches()
+        b.apply {
+            name.cases = listOf(
+                R.string.formNameTooShort to { this.length >= 3 },
+                R.string.formNameTooLong to { this.length <= 20 }
+            )
+            email.cases = listOf(
+                R.string.formEmailInvalid to { emailMatches(this) },
+                R.string.formEmailExists to { db.userDao().emailExist(this) == null }
+            )
+            pass.cases = listOf(
+                R.string.formPassTooShort to { this.length >= 8 },
+                R.string.formPassTooLong to { this.length <= 24 },
+            )
+            repeatPass.cases = listOf(
+                R.string.formPassNotMatch to { this == repeatPass.editText?.text.toString() }
+            )
+        }
     }
     private fun closeActivity(){
         val intent = Intent(this, LoginActivity::class.java)

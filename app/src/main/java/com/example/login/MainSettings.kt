@@ -1,14 +1,10 @@
 package com.example.login
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.example.login.data.User
 import com.example.login.databinding.FragmentMainSettingsBinding
 import com.example.login.utils.BaseFragment
-import com.example.login.utils.Session
 
 class MainSettings : BaseFragment<FragmentMainSettingsBinding>() {
     override fun getViewBinding() = FragmentMainSettingsBinding.inflate(layoutInflater)
@@ -21,6 +17,7 @@ class MainSettings : BaseFragment<FragmentMainSettingsBinding>() {
 
             logout.setOnClickListener { logout() }
         }
+        User.loadPfp(b.image, session.pfp)
     }
     private fun logout() = session.logout()
 }

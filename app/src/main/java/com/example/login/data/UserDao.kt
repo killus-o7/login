@@ -14,6 +14,8 @@ interface UserDao {
     fun all(): LiveData<List<User>>
     @Query("SELECT * FROM User WHERE email = :email AND pass = :pass LIMIT 1")
     suspend fun get(email: String, pass: String): User?
+    @Query("SELECT * FROM User WHERE id = :id")
+    fun getById(id: Int): User?
     @Query("SELECT email FROM User WHERE email = :email")
     suspend fun emailExist(email: String): String?
     @Insert(onConflict = OnConflictStrategy.ABORT)
